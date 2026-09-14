@@ -1,0 +1,347 @@
+/* =========================================================================
+   Reusable components
+   ========================================================================= */
+
+/* ---------------------------------------------------------------- buttons */
+
+.btn {
+  --btn-fg: currentColor;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.95em 1.9em;
+  border: 1px solid color-mix(in srgb, var(--btn-fg) 55%, transparent);
+  border-radius: var(--radius-pill);
+  font-size: var(--step--1);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--btn-fg);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.btn > span { position: relative; z-index: 1; }
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--btn-fg);
+  transform: translate3d(0, 101%, 0);
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+.btn:hover { color: var(--btn-contrast, var(--sand-50)); border-color: var(--btn-fg); }
+.btn:hover::before { transform: translate3d(0, 0, 0); }
+.btn__arrow { transition: transform var(--dur-mid) var(--ease-out); }
+.btn:hover .btn__arrow { transform: translate3d(4px, -4px, 0); }
+
+.btn--solid {
+  background: var(--ink-900);
+  color: var(--sand-50);
+  border-color: var(--ink-900);
+}
+.btn--solid::before { background: var(--sand-50); }
+.btn--solid:hover { color: var(--ink-900); }
+
+.btn--light { --btn-fg: var(--on-media); --btn-contrast: var(--ink-900); }
+
+.btn[disabled] { opacity: 0.45; pointer-events: none; }
+
+/* ------------------------------------------------------------- text links */
+
+.textlink {
+  position: relative;
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  padding-bottom: 0.3em;
+}
+.textlink::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+  transform-origin: right;
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+}
+.textlink:hover::after { opacity: 1; transform: scaleX(1.04); }
+
+/* --------------------------------------------------------- explore magnet */
+
+.explore {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  pointer-events: auto;
+}
+.explore__thumb {
+  width: clamp(120px, 15vw, 205px);
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 70px -40px rgba(20, 16, 10, 0.7),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+.explore__thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out), opacity var(--dur-mid) var(--ease-out);
+}
+.explore:hover .explore__thumb img { transform: scale(1.07); }
+.explore__label {
+  font-size: var(--step--1);
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--on-media);
+}
+.explore__label svg { transition: transform var(--dur-mid) var(--ease-out); }
+.explore:hover .explore__label svg { transform: translate3d(3px, -3px, 0); }
+
+/* ------------------------------------------------------------ media cards */
+
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--sand-200);
+}
+.media img { width: 100%; height: 100%; object-fit: cover; }
+.media--round { border-radius: var(--radius-md); }
+.media--pill { border-radius: 50% / 34%; }
+.media--oval { border-radius: 50%; }
+
+/* Parallax layer driven from JS via --p (-1 → 1). */
+.media__layer {
+  position: absolute;
+  inset: -8%;
+  will-change: transform;
+  transform: translate3d(0, calc(var(--p, 0) * 6%), 0) scale(1.1);
+}
+
+/* ------------------------------------------------------------ product card */
+
+.product-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1.4rem;
+  padding: clamp(1.2rem, 2vw, 2rem);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg, var(--sand-50));
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
+}
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--card-accent, var(--sand-300)) 60%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 40px 80px -60px rgba(36, 31, 25, 0.75); }
+.product-card:hover::before { opacity: 1; }
+
+.product-card__figure {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+/* Absolute + object-fit rather than a percentage height: a percentage against
+   an aspect-ratio box is not reliably resolvable and the bottle blows up. */
+.product-card__figure img {
+  position: absolute;
+  inset: 4% 0;
+  width: 100%;
+  height: 92%;
+  object-fit: contain;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.product-card:hover .product-card__figure img { transform: translateY(-10px) scale(1.03); }
+
+.product-card__body { display: grid; align-content: start; gap: 0.55rem; }
+.product-card__name { font-size: var(--step-2); line-height: 1.1; }
+.product-card__meta { font-size: var(--step--1); color: var(--ink-500); letter-spacing: 0.04em; }
+.product-card__foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.6rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--hairline);
+}
+.product-card__price { font-size: var(--step-1); font-variant-numeric: tabular-nums; }
+
+.tag {
+  display: inline-block;
+  padding: 0.35em 0.85em;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  font-size: var(--step--2);
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- marquee */
+
+.marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--hairline);
+  padding-block: 1.1rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 3.5rem;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 3.5rem;
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--ink-500);
+  white-space: nowrap;
+}
+.marquee__item::after {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold-500);
+}
+@keyframes marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ------------------------------------------------------------- accordions */
+
+.accordion { border-top: 1px solid var(--hairline); }
+.accordion__item { border-bottom: 1px solid var(--hairline); }
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1.35rem;
+  text-align: left;
+  font-size: var(--step-1);
+  font-weight: 300;
+}
+.accordion__icon {
+  position: relative;
+  width: 14px; height: 14px;
+  flex: none;
+}
+.accordion__icon::before,
+.accordion__icon::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1px;
+  background: currentColor;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.accordion__icon::after { transform: rotate(90deg); }
+.accordion__trigger[aria-expanded='true'] .accordion__icon::after { transform: rotate(0deg); }
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-mid) var(--ease-out);
+}
+.accordion__panel[data-open='true'] { grid-template-rows: 1fr; }
+.accordion__panel > div { overflow: hidden; }
+.accordion__panel p { padding-bottom: 1.5rem; color: var(--ink-500); max-width: 70ch; }
+
+/* ----------------------------------------------------------------- footer */
+
+.site-footer {
+  padding: clamp(3rem, 5vw, 6rem) 0 clamp(5rem, 7vw, 7rem);
+  background: var(--sand-100);
+  color: var(--ink-700);
+  text-align: center;
+}
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.2rem, 4vw, 3.5rem);
+  margin-bottom: 2.6rem;
+}
+.site-footer__nav a {
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-mid);
+  opacity: 0.75;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.site-footer__nav a:hover { opacity: 1; }
+.site-footer__rule { height: 1px; background: var(--hairline); margin-bottom: 2rem; }
+.site-footer__legal {
+  font-size: var(--step--2);
+  letter-spacing: 0.14em;
+  color: var(--ink-300);
+  line-height: 2;
+}
+
+/* ----------------------------------------------------------------- notice */
+
+.notice {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--frame-inset) + 4.6rem);
+  transform: translate(-50%, 20px);
+  z-index: var(--z-overlay);
+  padding: 0.85em 1.4em;
+  border-radius: var(--radius-pill);
+  background: var(--ink-900);
+  color: var(--sand-50);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.notice[data-show='true'] { opacity: 1; transform: translate(-50%, 0); }
+
+/* ------------------------------------------------------------ reveal base */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal='in'] { opacity: 1; transform: none; }
+
+/* Word-by-word headline reveal: each word gets its own mask so descenders
+   stay visible while the word rises into place. */
+.split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+.split__word {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1000ms var(--ease-out);
+  transition-delay: var(--word-delay, 0ms);
+}
+[data-reveal='in'] .split__word { transform: none; }
+[data-split] { opacity: 1; transform: none; }

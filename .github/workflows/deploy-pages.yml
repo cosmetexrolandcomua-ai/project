@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # The site is plain HTML/CSS/JS — there is nothing to compile. The only
+      # generated files are the SVG illustrations, and those are committed.
+      - name: Verify the committed artwork matches the generator
+        run: |
+          node tools/generate-art.mjs
+          git diff --exit-code -- assets/img \
+            || { echo "::error::assets/img is out of date — run 'node tools/generate-art.mjs' and commit the result"; exit 1; }
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

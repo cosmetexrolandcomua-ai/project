@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Nymphai still life">
+  <defs>
+    <linearGradient id="bg-linea" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#E0CEB4"/>
+      <stop offset="1" stop-color="#B08F6C"/>
+    </linearGradient>
+    <radialGradient id="key-linea" cx="0.34" cy="0.26" r="0.72">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig-linea" cx="0.5" cy="0.46" r="0.74">
+      <stop offset="0.46" stop-color="#2A241B" stop-opacity="0"/>
+      <stop offset="1" stop-color="#2A241B" stop-opacity="0.55"/>
+    </radialGradient>
+    <linearGradient id="plinth-linea" x1="0" y1="0" x2="1" y2="0.2">
+      <stop offset="0" stop-color="#EEE2CE"/>
+      <stop offset="0.55" stop-color="#D2BFA3"/>
+      <stop offset="1" stop-color="#EEE2CE" stop-opacity="0.72"/>
+    </linearGradient>
+    
+    <filter id="grain-linea" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.13"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg-linea)"/>
+  <circle cx="334" cy="221" r="134" fill="#FFFFFF" fill-opacity="0.103"/><circle cx="-84" cy="795" r="63" fill="#FFFFFF" fill-opacity="0.043"/><circle cx="775" cy="790" r="179" fill="#FFFFFF" fill-opacity="0.076"/><circle cx="495" cy="182" r="148" fill="#FFFFFF" fill-opacity="0.053"/><circle cx="92" cy="77" r="188" fill="#FFFFFF" fill-opacity="0.078"/><circle cx="867" cy="497" r="98" fill="#FFFFFF" fill-opacity="0.057"/><circle cx="741" cy="578" r="211" fill="#FFFFFF" fill-opacity="0.112"/><circle cx="1750" cy="3" r="164" fill="#FFFFFF" fill-opacity="0.090"/><circle cx="518" cy="774" r="195" fill="#FFFFFF" fill-opacity="0.074"/><circle cx="1225" cy="359" r="120" fill="#FFFFFF" fill-opacity="0.096"/><circle cx="825" cy="-82" r="116" fill="#FFFFFF" fill-opacity="0.078"/><circle cx="413" cy="38" r="208" fill="#FFFFFF" fill-opacity="0.062"/><circle cx="1140" cy="1091" r="173" fill="#FFFFFF" fill-opacity="0.080"/><circle cx="1136" cy="427" r="161" fill="#FFFFFF" fill-opacity="0.060"/><circle cx="806" cy="538" r="194" fill="#FFFFFF" fill-opacity="0.127"/><circle cx="1276" cy="593" r="75" fill="#FFFFFF" fill-opacity="0.130"/>
+  <rect width="1600" height="1000" fill="url(#key-linea)"/>
+
+  <!-- soft leaf shadows raking across the backdrop -->
+  <g opacity="0.2" fill="#2A241B">
+    <path d="M992 -40 q140 260 -10 520 q-120 200 40 420" stroke="#2A241B" stroke-width="90" stroke-opacity="0.16" fill="none" stroke-linecap="round"/>
+    <path d="M1376 60 q90 300 -40 560" stroke="#2A241B" stroke-width="56" stroke-opacity="0.12" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- plinth -->
+  <g>
+    <ellipse cx="800" cy="845" rx="672" ry="46" fill="#2A241B" fill-opacity="0.16"/>
+    <rect x="160" y="800" width="1280" height="120" rx="16" fill="url(#plinth-linea)"/>
+    <rect x="160" y="800" width="1280" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.28"/>
+    <g fill="#2A241B" fill-opacity="0.12">
+      <ellipse cx="384" cy="855" rx="34" ry="11"/>
+      <ellipse cx="656" cy="885" rx="22" ry="8"/>
+      <ellipse cx="1056" cy="848" rx="41" ry="12"/>
+      <ellipse cx="1264" cy="888" rx="18" ry="7"/>
+    </g>
+  </g>
+
+  <!-- orchid branch -->
+  <path d="M96 900 C 480 820, 672 600, 800 350"
+        stroke="#2A241B" stroke-opacity="0.34" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M1552 620 C 1280 600, 1120 500, 992 300"
+        stroke="#2A241B" stroke-opacity="0.28" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <g opacity="1">
+      <ellipse cx="332.1" cy="691.6" rx="36.5" ry="49.9" fill="#E7DCC8" fill-opacity="0.95" transform="rotate(14.0 332.1 691.6)"/>
+      <ellipse cx="372.7" cy="736.3" rx="44.2" ry="53.8" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(86.0 372.7 736.3)"/>
+      <ellipse cx="275.2" cy="712.0" rx="44.2" ry="53.8" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(-58.0 275.2 712.0)"/>
+      <ellipse cx="340.9" cy="791.6" rx="40.3" ry="48.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(158.0 340.9 791.6)"/>
+      <ellipse cx="277.3" cy="775.8" rx="40.3" ry="48.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(230.0 277.3 775.8)"/>
+      <ellipse cx="320" cy="740" rx="28.8" ry="25.0" fill="#FCF8F0" fill-opacity="0.9"/>
+      <ellipse cx="320" cy="745.8" rx="14.4" ry="16.3" fill="#D8C89F" fill-opacity="0.85"/>
+    </g>
+  <g opacity="0.94">
+      <ellipse cx="560.8" cy="572.4" rx="29.6" ry="40.6" fill="#E7DCC8" fill-opacity="0.95" transform="rotate(-22.0 560.8 572.4)"/>
+      <ellipse cx="608.9" cy="582.4" rx="35.9" ry="43.7" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(50.0 608.9 582.4)"/>
+      <ellipse cx="533.2" cy="613.0" rx="35.9" ry="43.7" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(-94.0 533.2 613.0)"/>
+      <ellipse cx="614.4" cy="634.0" rx="32.8" ry="39.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(122.0 614.4 634.0)"/>
+      <ellipse cx="565.1" cy="653.9" rx="32.8" ry="39.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(194.0 565.1 653.9)"/>
+      <ellipse cx="576" cy="610" rx="23.4" ry="20.3" fill="#FCF8F0" fill-opacity="0.9"/>
+      <ellipse cx="576" cy="614.7" rx="11.7" ry="13.3" fill="#D8C89F" fill-opacity="0.85"/>
+    </g>
+  <g opacity="1">
+      <ellipse cx="1319.9" cy="602.3" rx="42.6" ry="58.2" fill="#E7DCC8" fill-opacity="0.95" transform="rotate(-8.0 1319.9 602.3)"/>
+      <ellipse cx="1383.4" cy="633.0" rx="51.5" ry="62.7" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(64.0 1383.4 633.0)"/>
+      <ellipse cx="1267.3" cy="649.3" rx="51.5" ry="62.7" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(-80.0 1267.3 649.3)"/>
+      <ellipse cx="1373.1" cy="706.7" rx="47.0" ry="56.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(136.0 1373.1 706.7)"/>
+      <ellipse cx="1297.5" cy="717.4" rx="47.0" ry="56.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(208.0 1297.5 717.4)"/>
+      <ellipse cx="1328" cy="660" rx="33.6" ry="29.1" fill="#FCF8F0" fill-opacity="0.9"/>
+      <ellipse cx="1328" cy="666.7" rx="16.8" ry="19.0" fill="#D8C89F" fill-opacity="0.85"/>
+    </g>
+  <g opacity="0.9">
+      <ellipse cx="1152.0" cy="407.3" rx="26.6" ry="36.4" fill="#E7DCC8" fill-opacity="0.95" transform="rotate(26.0 1152.0 407.3)"/>
+      <ellipse cx="1174.1" cy="445.4" rx="32.2" ry="39.2" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(98.0 1174.1 445.4)"/>
+      <ellipse cx="1108.3" cy="413.3" rx="32.2" ry="39.2" fill="#FCF8F0" fill-opacity="0.96" transform="rotate(-46.0 1108.3 413.3)"/>
+      <ellipse cx="1143.1" cy="480.0" rx="29.4" ry="35.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(170.0 1143.1 480.0)"/>
+      <ellipse cx="1100.2" cy="459.1" rx="29.4" ry="35.0" fill="#E7DCC8" fill-opacity="0.9" transform="rotate(242.0 1100.2 459.1)"/>
+      <ellipse cx="1136" cy="440" rx="21.0" ry="18.2" fill="#FCF8F0" fill-opacity="0.9"/>
+      <ellipse cx="1136" cy="444.2" rx="10.5" ry="11.9" fill="#D8C89F" fill-opacity="0.85"/>
+    </g>
+  <ellipse cx="160" cy="820" rx="15.6" ry="30" fill="#EFE7D8" fill-opacity="0.92" transform="rotate(24 160 820)"/>
+  <ellipse cx="240" cy="870" rx="12.5" ry="24" fill="#EFE7D8" fill-opacity="0.92" transform="rotate(-12 240 870)"/>
+  <ellipse cx="1488" cy="530" rx="14.0" ry="27" fill="#EFE7D8" fill-opacity="0.92" transform="rotate(32 1488 530)"/>
+
+  <rect width="1600" height="1000" fill="url(#vig-linea)"/>
+  <rect width="1600" height="1000" filter="url(#grain-linea)" opacity="0.5"/>
+<svg x="514.7" y="250.0" width="250.5" height="560.0" viewBox="0 0 340 760" role="img" aria-label="VISO">
+  <defs>
+    <linearGradient id="body-comfort" x1="0" y1="0" x2="1" y2="0.35">
+      <stop offset="0" stop-color="#CFE0EC"/>
+      <stop offset="0.42" stop-color="#CFE0EC"/>
+      <stop offset="1" stop-color="#9FBBD2"/>
+    </linearGradient>
+    <linearGradient id="cap-comfort" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="0.3" stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="0.72" stop-color="#EFEFEF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#CFD3D6" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="gloss-comfort" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shadow-comfort" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3A332A" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#3A332A" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      text { font-family: 'Jost', 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif; fill: #FFFFFF; text-anchor: middle; }
+      .eyebrow { font-size: 25px; letter-spacing: 3px; font-weight: 300; }
+      .name { font-size: 54px; letter-spacing: 4px; font-weight: 400; }
+      .sub { font-size: 25px; font-style: italic; font-family: 'Cormorant Garamond', Georgia, serif; fill-opacity: 0.92; }
+      .badge { font-size: 14px; letter-spacing: 1.6px; fill: #2E4356; font-weight: 500; }
+      .a { font-size: 14px; letter-spacing: 1.8px; fill-opacity: 0.86; }
+      .vol { font-size: 20px; letter-spacing: 1px; }
+      .oz { font-size: 15px; letter-spacing: 1px; fill-opacity: 0.85; }
+      .brand { font-size: 26px; letter-spacing: 0.4px; font-weight: 400; }
+    </style>
+  </defs>
+
+  <ellipse cx="170" cy="741" rx="150" ry="19" fill="url(#shadow-comfort)"/>
+
+  <!-- pump actuator + cap -->
+  <path d="M152 44h36a8 8 0 0 1 8 8v12h-52V52a8 8 0 0 1 8-8z" fill="#E9EBEC" fill-opacity="0.95"/>
+  <rect x="104" y="62" width="132" height="126" rx="13" fill="url(#cap-comfort)"/>
+  <rect x="104" y="170" width="132" height="18" rx="9" fill="#D5D9DC" fill-opacity="0.85"/>
+  <rect x="118" y="186" width="104" height="18" rx="6" fill="#C3C9CE" fill-opacity="0.9"/>
+
+  <!-- body -->
+  <rect x="66" y="200" width="208" height="536" rx="34" fill="url(#body-comfort)"/>
+  <rect x="84" y="214" width="26" height="508" rx="13" fill="url(#gloss-comfort)" opacity="0.55"/>
+  <rect x="238" y="214" width="14" height="508" rx="7" fill="#1F2A33" opacity="0.07"/>
+
+  <!-- label -->
+  <g transform="translate(0,-6)">
+    <path d="M107 300 l14-22 14 22z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9"/>
+    <text x="184" y="302" class="eyebrow">CREMA</text>
+    <text x="170" y="358" class="name">VISO</text>
+    <text x="170" y="398" class="sub">Dafne</text>
+    <rect x="74" y="420" width="192" height="32" rx="16" fill="#FFFFFF" fill-opacity="0.92"/>
+    <text x="170" y="442" class="badge">CON LATTE D'ASINA</text>
+    <text x="170" y="492" class="a">VITAMINA E</text>
+    <text x="170" y="578" class="vol">50ml ℮</text>
+    <text x="170" y="602" class="oz">1.69 fl.oz</text>
+    <rect x="96" y="640" width="148" height="46" rx="23" fill="#2E4356"/>
+    <text x="170" y="671" class="brand">nymphai</text>
+  </g>
+</svg>
+<svg x="692.4" y="205.0" width="275.1" height="615.0" viewBox="0 0 340 760" role="img" aria-label="VISO">
+  <defs>
+    <linearGradient id="body-hidra" x1="0" y1="0" x2="1" y2="0.35">
+      <stop offset="0" stop-color="#D2D8DE"/>
+      <stop offset="0.42" stop-color="#D2D8DE"/>
+      <stop offset="1" stop-color="#9BA7B2"/>
+    </linearGradient>
+    <linearGradient id="cap-hidra" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="0.3" stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="0.72" stop-color="#EFEFEF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#CFD3D6" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="gloss-hidra" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shadow-hidra" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3A332A" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#3A332A" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      text { font-family: 'Jost', 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif; fill: #FFFFFF; text-anchor: middle; }
+      .eyebrow { font-size: 25px; letter-spacing: 3px; font-weight: 300; }
+      .name { font-size: 54px; letter-spacing: 4px; font-weight: 400; }
+      .sub { font-size: 25px; font-style: italic; font-family: 'Cormorant Garamond', Georgia, serif; fill-opacity: 0.92; }
+      .badge { font-size: 14px; letter-spacing: 1.6px; fill: #2E4356; font-weight: 500; }
+      .a { font-size: 14px; letter-spacing: 1.8px; fill-opacity: 0.86; }
+      .vol { font-size: 20px; letter-spacing: 1px; }
+      .oz { font-size: 15px; letter-spacing: 1px; fill-opacity: 0.85; }
+      .brand { font-size: 26px; letter-spacing: 0.4px; font-weight: 400; }
+    </style>
+  </defs>
+
+  <ellipse cx="170" cy="741" rx="150" ry="19" fill="url(#shadow-hidra)"/>
+
+  <!-- pump actuator + cap -->
+  <path d="M152 44h36a8 8 0 0 1 8 8v12h-52V52a8 8 0 0 1 8-8z" fill="#E9EBEC" fill-opacity="0.95"/>
+  <rect x="104" y="62" width="132" height="126" rx="13" fill="url(#cap-hidra)"/>
+  <rect x="104" y="170" width="132" height="18" rx="9" fill="#D5D9DC" fill-opacity="0.85"/>
+  <rect x="118" y="186" width="104" height="18" rx="6" fill="#C3C9CE" fill-opacity="0.9"/>
+
+  <!-- body -->
+  <rect x="66" y="200" width="208" height="536" rx="34" fill="url(#body-hidra)"/>
+  <rect x="84" y="214" width="26" height="508" rx="13" fill="url(#gloss-hidra)" opacity="0.55"/>
+  <rect x="238" y="214" width="14" height="508" rx="7" fill="#1F2A33" opacity="0.07"/>
+
+  <!-- label -->
+  <g transform="translate(0,-6)">
+    <path d="M107 300 l14-22 14 22z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9"/>
+    <text x="184" y="302" class="eyebrow">CREMA</text>
+    <text x="170" y="358" class="name">VISO</text>
+    <text x="170" y="398" class="sub">Dafne</text>
+    <rect x="74" y="420" width="192" height="32" rx="16" fill="#FFFFFF" fill-opacity="0.92"/>
+    <text x="170" y="442" class="badge">CON LATTE D'ASINA</text>
+    <text x="170" y="492" class="a">COLLAGENE E</text><text x="170" y="516" class="a">ACIDO IALURONICO</text>
+    <text x="170" y="578" class="vol">50ml ℮</text>
+    <text x="170" y="602" class="oz">1.69 fl.oz</text>
+    <rect x="96" y="640" width="148" height="46" rx="23" fill="#2E4356"/>
+    <text x="170" y="671" class="brand">nymphai</text>
+  </g>
+</svg>
+<svg x="897.0" y="300.0" width="225.9" height="505.0" viewBox="0 0 340 760" role="img" aria-label="VISO">
+  <defs>
+    <linearGradient id="body-siero" x1="0" y1="0" x2="1" y2="0.35">
+      <stop offset="0" stop-color="#C9D3DC"/>
+      <stop offset="0.42" stop-color="#C9D3DC"/>
+      <stop offset="1" stop-color="#93A2AE"/>
+    </linearGradient>
+    <linearGradient id="cap-siero" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="0.3" stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="0.72" stop-color="#EFEFEF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#CFD3D6" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="gloss-siero" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shadow-siero" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3A332A" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#3A332A" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      text { font-family: 'Jost', 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif; fill: #FFFFFF; text-anchor: middle; }
+      .eyebrow { font-size: 25px; letter-spacing: 3px; font-weight: 300; }
+      .name { font-size: 54px; letter-spacing: 4px; font-weight: 400; }
+      .sub { font-size: 25px; font-style: italic; font-family: 'Cormorant Garamond', Georgia, serif; fill-opacity: 0.92; }
+      .badge { font-size: 14px; letter-spacing: 1.6px; fill: #2E4356; font-weight: 500; }
+      .a { font-size: 14px; letter-spacing: 1.8px; fill-opacity: 0.86; }
+      .vol { font-size: 20px; letter-spacing: 1px; }
+      .oz { font-size: 15px; letter-spacing: 1px; fill-opacity: 0.85; }
+      .brand { font-size: 26px; letter-spacing: 0.4px; font-weight: 400; }
+    </style>
+  </defs>
+
+  <ellipse cx="170" cy="741" rx="150" ry="19" fill="url(#shadow-siero)"/>
+
+  <!-- pump actuator + cap -->
+  <path d="M152 44h36a8 8 0 0 1 8 8v12h-52V52a8 8 0 0 1 8-8z" fill="#E9EBEC" fill-opacity="0.95"/>
+  <rect x="104" y="62" width="132" height="126" rx="13" fill="url(#cap-siero)"/>
+  <rect x="104" y="170" width="132" height="18" rx="9" fill="#D5D9DC" fill-opacity="0.85"/>
+  <rect x="118" y="186" width="104" height="18" rx="6" fill="#C3C9CE" fill-opacity="0.9"/>
+
+  <!-- body -->
+  <rect x="66" y="200" width="208" height="536" rx="34" fill="url(#body-siero)"/>
+  <rect x="84" y="214" width="26" height="508" rx="13" fill="url(#gloss-siero)" opacity="0.55"/>
+  <rect x="238" y="214" width="14" height="508" rx="7" fill="#1F2A33" opacity="0.07"/>
+
+  <!-- label -->
+  <g transform="translate(0,-6)">
+    <path d="M107 300 l14-22 14 22z" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.9"/>
+    <text x="184" y="302" class="eyebrow">SIERO</text>
+    <text x="170" y="358" class="name">VISO</text>
+    <text x="170" y="398" class="sub">Dafne</text>
+    <rect x="74" y="420" width="192" height="32" rx="16" fill="#FFFFFF" fill-opacity="0.92"/>
+    <text x="170" y="442" class="badge">CON LATTE D'ASINA</text>
+    <text x="170" y="492" class="a">ILLUMINANTE</text>
+    <text x="170" y="578" class="vol">30ml ℮</text>
+    <text x="170" y="602" class="oz">1.01 fl.oz</text>
+    <rect x="96" y="640" width="148" height="46" rx="23" fill="#2E4356"/>
+    <text x="170" y="671" class="brand">nymphai</text>
+  </g>
+</svg>
+</svg>

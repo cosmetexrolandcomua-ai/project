@@ -1,0 +1,84 @@
+/* =========================================================================
+   Design tokens
+   The palette is lifted from the campaign imagery: warm travertine sand,
+   deep foliage green, and the cool blue-grey of the Dafne packaging.
+   ========================================================================= */
+
+:root {
+  /* ---- neutrals / sand -------------------------------------------------- */
+  --sand-50:  #F7F3EC;
+  --sand-100: #EFE9DD;
+  --sand-200: #E2D8C6;
+  --sand-300: #CEBFA5;
+  --sand-400: #B5A388;
+  --sand-500: #9C8868;
+  --clay-600: #7C6A50;
+
+  /* ---- ink -------------------------------------------------------------- */
+  --ink-900: #241F19;
+  --ink-700: #3D362C;
+  --ink-500: #6B6355;
+  --ink-300: #9A9284;
+
+  /* ---- accents ---------------------------------------------------------- */
+  --green-900: #0E2318;
+  --green-700: #1D4433;
+  --green-500: #33684F;
+  --mist-200:  #CBD7DE;
+  --mist-400:  #9FB3C0;
+  --navy-700:  #2E4356;
+  --gold-500:  #B9975B;
+
+  /* ---- semantic --------------------------------------------------------- */
+  --bg: var(--sand-100);
+  --fg: var(--ink-900);
+  --hairline: color-mix(in srgb, var(--ink-900) 14%, transparent);
+  --on-media: #FFFFFF;
+
+  /* ---- type ------------------------------------------------------------- */
+  --font-display: 'Jost', 'Futura', 'Century Gothic', 'Avenir Next', 'Trebuchet MS', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+
+  --step--2: clamp(0.66rem, 0.63rem + 0.15vw, 0.74rem);
+  --step--1: clamp(0.78rem, 0.74rem + 0.2vw,  0.88rem);
+  --step-0:  clamp(0.94rem, 0.9rem  + 0.24vw, 1.06rem);
+  --step-1:  clamp(1.1rem,  1.02rem + 0.42vw, 1.36rem);
+  --step-2:  clamp(1.35rem, 1.18rem + 0.84vw, 1.9rem);
+  --step-3:  clamp(1.8rem,  1.4rem  + 1.9vw,  3rem);
+  --step-4:  clamp(2.4rem,  1.6rem  + 3.7vw,  5rem);
+  --step-5:  clamp(3rem,    1.7rem  + 6vw,    7.4rem);
+
+  --tracking-wide: 0.22em;
+  --tracking-mid: 0.12em;
+
+  /* ---- space / shape ---------------------------------------------------- */
+  --gutter: clamp(1.25rem, 0.8rem + 2.2vw, 3.25rem);
+  --frame-inset: clamp(1.1rem, 0.6rem + 2vw, 2.6rem);
+  --radius-sm: 8px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  /* ---- motion ----------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --dur-fast: 260ms;
+  --dur-mid: 620ms;
+  --dur-slow: 1100ms;
+
+  --z-canvas: 1;
+  --z-frame: 60;
+  --z-overlay: 80;
+  --z-cursor: 120;
+  --z-preloader: 200;
+}
+
+/* The chrome inverts to white whenever it sits over full-bleed imagery. */
+[data-chrome='light'] {
+  --chrome-fg: var(--on-media);
+  --chrome-hairline: rgba(255, 255, 255, 0.35);
+}
+[data-chrome='dark'] {
+  --chrome-fg: var(--ink-900);
+  --chrome-hairline: color-mix(in srgb, var(--ink-900) 22%, transparent);
+}
