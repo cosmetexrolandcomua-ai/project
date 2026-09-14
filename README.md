@@ -169,6 +169,11 @@ copy rather than spilling under the fixed frame.
 ## Deploying
 
 `.github/workflows/deploy-pages.yml` publishes the repository root to GitHub
-Pages on every push to `main`, after checking that the committed artwork still
-matches the generator. Enable it under **Settings → Pages → Source: GitHub
-Actions**. `.nojekyll` is present so Jekyll does not filter any paths.
+Pages on every push to the repository's **default branch**, after checking that
+the committed artwork still matches the generator. Enable it under
+**Settings → Pages → Source: GitHub Actions**. `.nojekyll` is present so Jekyll
+does not filter any paths.
+
+The workflow deliberately keys off `github.event.repository.default_branch`
+rather than a hard-coded branch name, so it works whether the default ends up
+being `main`, `master`, or the branch this was first pushed to.

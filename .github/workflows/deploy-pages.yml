@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
+# Fires on a push to whichever branch the repository treats as default, so the
+# workflow works whether that branch ends up being main, master or something else.
 on:
   push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,6 +17,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     environment:
       name: github-pages
