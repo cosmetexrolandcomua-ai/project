@@ -28,6 +28,7 @@
 
     NY.home.initHero();
     NY.home.initShowcase();
+    NY.home.initStatement();
 
     NY.motion.initSmoothScroll();
     NY.motion.initAccordions(document);

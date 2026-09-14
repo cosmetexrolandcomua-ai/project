@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Сторінку не знайдено — Nymphai Cosmetics</title>
-<meta name="description" content="404">
-<meta name="robots" content="noindex">
+<title>Контакти — Nymphai Cosmetics</title>
+<meta name="description" content="Зв’яжіться з Nymphai Cosmetics щодо лінії Dafne або замовлення.">
 <meta name="theme-color" content="#EFE9DD">
 <link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Сторінку не знайдено — Nymphai Cosmetics">
-<meta property="og:description" content="404">
+<meta property="og:title" content="Контакти — Nymphai Cosmetics">
+<meta property="og:description" content="Зв’яжіться з Nymphai Cosmetics щодо лінії Dafne або замовлення.">
 <meta property="og:locale" content="uk_UA">
 <meta property="og:locale:alternate" content="en_GB">
 <meta property="og:image" content="assets/img/scenes/still-linea.svg">
@@ -74,13 +73,28 @@
 </div>
 
 <main id="main">
-  <section class="notfound">
-    <div>
-      <p class="notfound__code">404</p>
-      <h1 class="title" data-i18n="nf.title">Сторінку не знайдено</h1>
-      <p class="lede muted" style="margin:1.2rem auto 2.4rem" data-i18n="nf.text"></p>
-      <a class="btn btn--solid" href="index.html"><span data-i18n="nf.cta">На головну</span></a>
-    </div>
+  <section class="page-top wrap">
+    <p class="eyebrow page-top__eyebrow" data-i18n="contact.eyebrow">Контакти</p>
+    <h1 class="headline" data-split data-reveal data-i18n="contact.title">Поговорімо</h1>
+    <p class="lede page-top__lede" data-reveal data-i18n="contact.lede"></p>
+  </section>
+
+  <section class="wrap" style="padding-bottom:clamp(5rem,9vw,9rem)">
+    <form class="form" data-contact-form novalidate>
+      <div class="field">
+        <label for="c-name" data-i18n="contact.name">Ім’я та прізвище</label>
+        <input id="c-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="c-email" data-i18n="contact.email">Email</label>
+        <input id="c-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="c-message" data-i18n="contact.message">Повідомлення</label>
+        <textarea id="c-message" name="message" required></textarea>
+      </div>
+      <p><button class="btn btn--solid" type="submit"><span data-i18n="contact.send">Надіслати повідомлення</span></button></p>
+    </form>
   </section>
 </main>
 

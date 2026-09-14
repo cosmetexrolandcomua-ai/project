@@ -4,12 +4,20 @@
 
 /* ------------------------------------------------------------------- hero */
 
+/* The section is made several screens tall by JS; the stage inside it is what
+   the visitor actually sees, held still by `position: sticky` while the extra
+   height scrolls past. No `overflow` on the section itself — that would create
+   a scroll container and stop the stage sticking to the viewport. */
 .hero {
   position: relative;
+  background: var(--sand-300);
+}
+.hero__stage {
+  position: sticky;
+  top: 0;
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
-  background: var(--sand-300);
 }
 
 .hero__slide {
@@ -17,12 +25,12 @@
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1200ms var(--ease-in-out), visibility 0s linear 1200ms;
+  transition: opacity 900ms var(--ease-in-out), visibility 0s linear 900ms;
 }
 .hero__slide[data-active='true'] {
   opacity: 1;
   visibility: visible;
-  transition: opacity 1200ms var(--ease-in-out), visibility 0s;
+  transition: opacity 900ms var(--ease-in-out), visibility 0s;
 }
 
 /* Two full-height halves that wipe in from the centre line. */
@@ -150,27 +158,49 @@
 .hero__slide[data-active='true'] .hero__product { opacity: 1; transform: translate(-50%, 0) scale(1); }
 
 @media (max-width: 860px) {
-  /* Halves stack instead of splitting, and the wipe runs top-to-bottom. */
+  /* A 50/50 split is unreadable at phone width, so the half carrying the
+     product goes full-bleed and the other is dropped. Browsers without :has()
+     fall back to the two halves stacked, which still reads correctly. */
   .hero__half { width: 100%; height: 50%; }
   .hero__half--left { top: 0; }
   .hero__half--right { top: 50%; right: auto; left: 0; }
   .hero__half--left .hero__media { clip-path: inset(0 0 100% 0); }
   .hero__half--right .hero__media { clip-path: inset(100% 0 0 0); }
 
-  /* Clear the brandmark at the top and the frame links at the bottom. */
+  .hero__half:has(.hero__product) { top: 0; height: 100%; }
+  .hero__half:has(.hero__product) .hero__media { clip-path: inset(0 0 100% 0); }
+  .hero__half:not(:has(.hero__product)) { display: none; }
+
+  /* Title and caption read as one lockup at the top of the frame. */
   .hero__copy {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.04em;
     padding: calc(var(--frame-inset) + 7rem) var(--gutter) calc(var(--frame-inset) + 3.4rem);
   }
-  .hero__slide[data-layout='a'] .hero__title,
-  .hero__slide[data-layout='b'] .hero__title { grid-area: 1 / 1; align-self: start; justify-self: start; }
-  .hero__slide[data-layout='a'] .hero__caption,
-  .hero__slide[data-layout='b'] .hero__caption { grid-area: 3 / 1; align-self: end; justify-self: start; text-align: left; }
+  .hero__title,
+  .hero__caption {
+    font-size: clamp(2.3rem, 1.1rem + 6.6vw, 3.6rem);
+    text-align: left;
+  }
+  .hero__caption { opacity: 0.88; }
 
-  .hero__product { height: min(38%, 230px); bottom: 4%; }
-  .hero__explore { top: auto; bottom: 25%; transform: translateX(-50%); }
-  .hero__explore .explore__thumb { width: 96px; }
+  .hero__product { height: min(42%, 300px); bottom: 16%; }
+
+  /* The Explore card becomes a pill at the foot of the frame. */
+  .hero__explore {
+    top: auto;
+    bottom: calc(var(--frame-inset) + 3.2rem);
+    transform: translateX(-50%);
+  }
+  .hero__explore .explore__thumb { display: none; }
+  .hero__explore .explore__label {
+    padding: 0.85em 1.6em;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-pill);
+  }
   .hero__dots { display: none; }
 }
 
@@ -433,39 +463,81 @@
 
 /* ---------------------------------------------------------- statement band */
 
+/* Three statements that replace one another as the band scrolls, rather than
+   three rows stacked down the page. Same pinned-stage mechanism as the hero. */
 .statement {
+  position: relative;
   background: var(--sand-400);
   color: var(--on-media);
-  padding-block: clamp(5rem, 11vw, 12rem);
-  overflow: hidden;
 }
-.statement__row {
+.statement__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  padding: calc(var(--frame-inset) + 6rem) var(--gutter) calc(var(--frame-inset) + 5rem);
+}
+.statement__counter {
+  position: absolute;
+  right: var(--frame-inset);
+  top: calc(var(--frame-inset) + 4.2rem);
+  font-size: var(--step-1);
+  letter-spacing: 0.22em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+.statement__lines {
+  position: relative;
+  height: 100%;
+}
+.statement__line {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
+  align-content: center;  /* keeps wrapped rows together instead of spread apart */
   justify-content: center;
-  gap: clamp(1rem, 3vw, 3rem);
+  gap: clamp(0.8rem, 2vw, 2.4rem) clamp(1rem, 3vw, 3rem);
   flex-wrap: wrap;
-  margin-block: clamp(1rem, 2.4vw, 2.6rem);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 7%, 0);
+  transition: opacity 760ms var(--ease-in-out), transform 1000ms var(--ease-out),
+              visibility 0s linear 760ms;
 }
+.statement__line[data-active='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 760ms var(--ease-in-out), transform 1000ms var(--ease-out), visibility 0s;
+}
+/* Sized a touch below --step-4: Ukrainian words run longer than the Italian
+   originals and need the extra room to stay on two lines at most. */
 .statement__word {
-  font-size: var(--step-4);
+  font-size: clamp(2rem, 1.1rem + 3.1vw, 4.4rem);
   font-weight: 200;
-  line-height: 1;
+  line-height: 1.04;
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
 .statement__tile {
-  width: clamp(130px, 17vw, 260px);
+  width: clamp(120px, 14vw, 220px);
   aspect-ratio: var(--ar, 4 / 3);
   border-radius: var(--radius-md);
   overflow: hidden;
   flex: none;
+  transform: scale(0.9);
+  transition: transform 1100ms var(--ease-out);
 }
+.statement__line[data-active='true'] .statement__tile { transform: none; }
 .statement__tile img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Alternating horizontal drift as the band scrolls past. */
-.statement__row--drift-l { transform: translate3d(calc(var(--drift, 0) * -60px), 0, 0); }
-.statement__row--drift-r { transform: translate3d(calc(var(--drift, 0) * 60px), 0, 0); }
+@media (max-width: 860px) {
+  .statement__stage { padding-top: calc(var(--frame-inset) + 7rem); }
+  .statement__counter { top: calc(var(--frame-inset) + 7rem); right: var(--gutter); font-size: var(--step--1); }
+  .statement__line { flex-direction: column; gap: 1.2rem; }
+  .statement__word { font-size: var(--step-3); white-space: normal; text-align: center; }
+}
 
 /* ------------------------------------------------------------- line-up cta */
 

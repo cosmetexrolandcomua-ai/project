@@ -84,10 +84,17 @@ window.NY = window.NY || {};
 
   const emit = (name, detail) => document.dispatchEvent(new CustomEvent(name, { detail }));
 
-  /** 32,90 € in Italian, € 32.90 in English — matched to the active locale. */
+  const PRICE_LOCALE = { uk: 'uk-UA', en: 'en-IE' };
+
+  /** "32,90 €" in Ukrainian, "€32.90" in English.
+      narrowSymbol matters here: the Ukrainian locale otherwise spells EUR out
+      in full, because the euro is not its local currency. */
   const formatPrice = (value, lang) =>
-    new Intl.NumberFormat(lang === 'en' ? 'en-IE' : 'it-IT', {
-      style: 'currency', currency: 'EUR', minimumFractionDigits: 2,
+    new Intl.NumberFormat(PRICE_LOCALE[lang] || PRICE_LOCALE.uk, {
+      style: 'currency',
+      currency: 'EUR',
+      currencyDisplay: 'narrowSymbol',
+      minimumFractionDigits: 2,
     }).format(value);
 
   const pad2 = (n) => String(n).padStart(2, '0');

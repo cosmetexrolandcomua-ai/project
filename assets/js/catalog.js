@@ -11,7 +11,7 @@
 
   function card(p, lang) {
     return `
-      <a class="product-card" href="prodotto.html?id=${esc(p.id)}" style="--card-accent:${esc(p.accent)}"
+      <a class="product-card" href="product.html?id=${esc(p.id)}" style="--card-accent:${esc(p.accent)}"
          data-reveal data-cursor-label="${esc(NY.i18n.t('showcase.discover'))}">
         <div class="product-card__figure">
           <img src="${esc(p.bottle)}" alt="${esc(p.name)}" loading="lazy" width="340" height="760">
@@ -130,7 +130,7 @@
         </div>
 
         <div class="pdp__info">
-          <a class="textlink muted" href="prodotti.html">← ${esc(t('pdp.back'))}</a>
+          <a class="textlink muted" href="products.html">← ${esc(t('pdp.back'))}</a>
           <p class="eyebrow muted">${esc(p.line)}</p>
           <h1 class="pdp__name">${esc(p.name)}</h1>
           <p class="pdp__claim">${esc(p.claim)}</p>
@@ -218,7 +218,7 @@
         root.innerHTML = `
           <div class="cart__empty" style="grid-column:1/-1">
             <p class="subtitle">${esc(t('cart.empty'))}</p>
-            <a class="btn btn--solid" href="prodotti.html"><span>${esc(t('cart.continue'))}</span></a>
+            <a class="btn btn--solid" href="products.html"><span>${esc(t('cart.continue'))}</span></a>
           </div>`;
         return;
       }
@@ -231,7 +231,7 @@
                 <img src="${esc(product.bottle)}" alt="${esc(product.name)}" loading="lazy" width="340" height="760">
               </div>
               <div class="cart__meta">
-                <a class="cart__name" href="prodotto.html?id=${esc(product.id)}">${esc(product.name)}</a>
+                <a class="cart__name" href="product.html?id=${esc(product.id)}">${esc(product.name)}</a>
                 <span class="cart__sub">${esc(product.volume)} · ${formatPrice(product.price, lang)}</span>
               </div>
               <div class="cart__controls">

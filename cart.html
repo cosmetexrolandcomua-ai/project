@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="it" data-chrome="dark">
+<html lang="uk" data-chrome="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contatti — Nymphai Cosmetics</title>
-<meta name="description" content="Contatta Nymphai Cosmetics per informazioni sulla linea Dafne o su un ordine.">
+<title>Кошик — Nymphai Cosmetics</title>
+<meta name="description" content="Ваш кошик Nymphai Cosmetics.">
 <meta name="theme-color" content="#EFE9DD">
 <link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Contatti — Nymphai Cosmetics">
-<meta property="og:description" content="Contatta Nymphai Cosmetics per informazioni sulla linea Dafne o su un ordine.">
+<meta property="og:title" content="Кошик — Nymphai Cosmetics">
+<meta property="og:description" content="Ваш кошик Nymphai Cosmetics.">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:locale:alternate" content="en_GB">
 <meta property="og:image" content="assets/img/scenes/still-linea.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,15 +25,15 @@
 </head>
 <body>
 
-<a class="skip-link" href="#main" data-i18n="skip">Vai al contenuto</a>
+<a class="skip-link" href="#main" data-i18n="skip">Перейти до вмісту</a>
 
 <!-- =============================================================== cursor -->
 <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
-<!-- ============================================================== frame -->
+<!-- ================================================================ frame -->
 <header class="frame">
-  <nav class="frame__tl" aria-label="Principale">
-    <a class="frame__link" href="index.html" data-i18n="nav.home">Home</a>
+  <nav class="frame__tl" data-i18n-attr="aria-label:nav.primary" aria-label="Основна навігація">
+    <a class="frame__link" href="index.html" data-i18n="nav.home">Головна</a>
   </nav>
 
   <a class="brandmark" href="index.html" aria-label="Nymphai Cosmetics">
@@ -43,71 +45,53 @@
     <span class="brandmark__sub">Cosmetics</span>
   </a>
 
-  <nav class="frame__tr" aria-label="Prodotti">
-    <a class="frame__link" href="prodotti.html" data-i18n="nav.products">Prodotti</a>
+  <nav class="frame__tr" data-i18n-attr="aria-label:nav.products" aria-label="Продукти">
+    <a class="frame__link" href="products.html" data-i18n="nav.products">Продукти</a>
   </nav>
 
-  <nav class="frame__bl" aria-label="Brand">
-    <a class="frame__link" href="brand.html" data-i18n="nav.brand">Brand</a>
+  <nav class="frame__bl" data-i18n-attr="aria-label:nav.brand" aria-label="Бренд">
+    <a class="frame__link" href="brand.html" data-i18n="nav.brand">Бренд</a>
   </nav>
 
   <div class="frame__br">
-    <a class="frame__link cart-link" href="carrello.html" data-filled="false">
-      <span data-i18n="nav.cart">Carrello</span>
+    <a class="frame__link cart-link" href="cart.html" data-filled="false">
+      <span data-i18n="nav.cart">Кошик</span>
       <span class="cart-link__count" aria-hidden="true"><span>0</span></span>
     </a>
     <span class="frame__divider" aria-hidden="true"></span>
-    <div class="lang" role="group" aria-label="Lingua">
-      <button class="lang__btn" type="button" data-lang="it" aria-pressed="true">IT</button>
+    <div class="lang" role="group" data-i18n-attr="aria-label:nav.lang" aria-label="Мова">
+      <button class="lang__btn" type="button" data-lang="uk" aria-pressed="true">UA</button>
       <button class="lang__btn" type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
   </div>
 </header>
 
-<!-- ============================================================ scroll rail -->
+<!-- =========================================================== scroll rail -->
 <div class="rail" data-visible="false" aria-hidden="true">
   <span class="rail__value">0%</span>
   <span class="rail__ticks"></span>
 </div>
 
 <main id="main">
-  <section class="page-top wrap">
-    <p class="eyebrow page-top__eyebrow" data-i18n="contact.eyebrow">Contatti</p>
-    <h1 class="headline" data-split data-reveal data-i18n="contact.title">Parliamone</h1>
-    <p class="lede page-top__lede" data-reveal data-i18n="contact.lede"></p>
+  <section class="page-top wrap" style="padding-bottom:0">
+    <p class="eyebrow page-top__eyebrow" data-i18n="nav.cart">Кошик</p>
+    <h1 class="headline" data-split data-reveal data-i18n="cart.title">Кошик</h1>
   </section>
-
-  <section class="wrap" style="padding-bottom:clamp(5rem,9vw,9rem)">
-    <form class="form" data-contact-form novalidate>
-      <div class="field">
-        <label for="c-name" data-i18n="contact.name">Nome e cognome</label>
-        <input id="c-name" name="name" type="text" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="c-email" data-i18n="contact.email">Email</label>
-        <input id="c-email" name="email" type="email" autocomplete="email" required>
-      </div>
-      <div class="field">
-        <label for="c-message" data-i18n="contact.message">Messaggio</label>
-        <textarea id="c-message" name="message" required></textarea>
-      </div>
-      <p><button class="btn btn--solid" type="submit"><span data-i18n="contact.send">Invia messaggio</span></button></p>
-    </form>
-  </section>
+  <section class="cart wrap" data-cart-page><!-- rendered by assets/js/catalog.js --></section>
 </main>
 
 <!-- ============================================================== footer -->
 <footer class="site-footer" data-chrome="dark">
   <div class="wrap">
-    <nav class="site-footer__nav" aria-label="Legale">
-      <a href="contatti.html" data-i18n="footer.contacts">Contatti</a>
-      <a href="resi.html" data-i18n="footer.returns">Informativa su resi e rimborsi</a>
-      <a href="termini.html" data-i18n="footer.terms">Termini e condizioni</a>
-      <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+    <nav class="site-footer__nav" data-i18n-attr="aria-label:footer.nav" aria-label="Правова інформація">
+      <a href="contact.html" data-i18n="footer.contacts">Контакти</a>
+      <a href="returns.html" data-i18n="footer.returns">Повернення та відшкодування</a>
+      <a href="terms.html" data-i18n="footer.terms">Умови та положення</a>
+      <a href="privacy.html" data-i18n="footer.privacy">Політика приватності</a>
     </nav>
     <div class="site-footer__rule"></div>
     <p class="site-footer__legal" data-i18n="footer.legal">© 2026 Nymphai Cosmetics</p>
-    <p class="site-footer__legal" data-i18n="footer.demo">Ricostruzione dimostrativa.</p>
+    <p class="site-footer__legal" data-i18n="footer.demo">Демонстраційна реконструкція.</p>
   </div>
 </footer>
 

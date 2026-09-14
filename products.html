@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Сторінку не знайдено — Nymphai Cosmetics</title>
-<meta name="description" content="404">
-<meta name="robots" content="noindex">
+<title>Продукти — Nymphai Cosmetics</title>
+<meta name="description" content="Лінія Dafne від Nymphai Cosmetics: освітлювальна сироватка, крем Comfort, крем Hidra Lift і набір-ритуал.">
 <meta name="theme-color" content="#EFE9DD">
 <link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Сторінку не знайдено — Nymphai Cosmetics">
-<meta property="og:description" content="404">
+<meta property="og:title" content="Продукти — Nymphai Cosmetics">
+<meta property="og:description" content="Лінія Dafne від Nymphai Cosmetics: освітлювальна сироватка, крем Comfort, крем Hidra Lift і набір-ритуал.">
 <meta property="og:locale" content="uk_UA">
 <meta property="og:locale:alternate" content="en_GB">
 <meta property="og:image" content="assets/img/scenes/still-linea.svg">
@@ -74,14 +73,27 @@
 </div>
 
 <main id="main">
-  <section class="notfound">
-    <div>
-      <p class="notfound__code">404</p>
-      <h1 class="title" data-i18n="nf.title">Сторінку не знайдено</h1>
-      <p class="lede muted" style="margin:1.2rem auto 2.4rem" data-i18n="nf.text"></p>
-      <a class="btn btn--solid" href="index.html"><span data-i18n="nf.cta">На головну</span></a>
-    </div>
+  <section class="page-top wrap">
+    <p class="eyebrow page-top__eyebrow" data-i18n="catalogue.eyebrow">Каталог</p>
+    <h1 class="headline" data-split data-reveal data-i18n="catalogue.title">Продукти</h1>
+    <p class="lede page-top__lede" data-reveal style="--reveal-delay:150ms" data-i18n="catalogue.lede">Чотири жести, одна лінія.</p>
   </section>
+
+  <section class="catalogue wrap">
+    <div class="catalogue__filters" data-filters role="group" data-i18n-attr="aria-label:catalogue.filters" aria-label="Фільтри"></div>
+    <div class="catalogue__grid" data-catalogue><!-- rendered by assets/js/catalog.js --></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__item">Ослине молоко</span><span class="marquee__item">Клінічно протестовано</span>
+      <span class="marquee__item">Колаген</span><span class="marquee__item">Гіалуронова кислота</span>
+      <span class="marquee__item">Вітамін E</span><span class="marquee__item">Made in Italy</span>
+      <span class="marquee__item">Ослине молоко</span><span class="marquee__item">Клінічно протестовано</span>
+      <span class="marquee__item">Колаген</span><span class="marquee__item">Гіалуронова кислота</span>
+      <span class="marquee__item">Вітамін E</span><span class="marquee__item">Made in Italy</span>
+    </div>
+  </div>
 </main>
 
 <!-- ============================================================== footer -->

@@ -1,7 +1,11 @@
 /* =========================================================================
    Catalogue data — the single source of truth for products across every page.
-   Copy is authored in Italian first (the brand's primary market) with an
-   English counterpart for the IT/EN switch in the frame.
+   Copy is authored in Ukrainian (the primary language) with an English
+   counterpart for the UA/EN switch in the frame.
+
+   Each entry keeps its shared, language-independent fields at the top level
+   (id, price, volume, artwork paths, accent colours) and everything that gets
+   translated inside the `uk` and `en` blocks. `resolve()` merges the two.
    ========================================================================= */
 (function (NY) {
   'use strict';
@@ -20,15 +24,15 @@
       texture: 'assets/img/scenes/texture-milk.svg',
       accent: '#B9C7D1',
       stageBg: '#93A2AE',
-      it: {
-        line: 'Linea Dafne',
-        name: 'Siero Viso Illuminante',
-        claim: 'Il concentrato che dà energia e splendore all’incarnato.',
-        text: 'Un siero leggero ma ricco, capace di illuminare la pelle giorno dopo giorno. Il latte d’asina si unisce a un complesso vitaminico selezionato per attenuare le discromie e restituire uniformità, senza mai appesantire.',
-        familyLabel: 'Sieri',
-        actives: ['Latte d’asina', 'Niacinamide', 'Vitamina C stabilizzata'],
-        ritual: 'Mattina e sera, su pelle pulita e asciutta. Tre gocce, picchiettate dal centro del viso verso l’esterno, prima della crema.',
-        texture_note: 'Fluido setoso, finish naturale, assorbimento immediato.',
+      uk: {
+        line: 'Лінія Dafne',
+        name: 'Освітлювальна сироватка',
+        claim: 'Концентрат, що дає шкірі енергію та сяйво.',
+        text: 'Легка, але насичена сироватка, яка освітлює шкіру день за днем. Ослине молоко поєднується з дібраним вітамінним комплексом, щоб пом’якшити нерівний тон і повернути чистоту, ніколи не обтяжуючи шкіру.',
+        familyLabel: 'Сироватки',
+        actives: ['Ослине молоко', 'Ніацинамід', 'Стабілізований вітамін C'],
+        ritual: 'Вранці та ввечері на чисту суху шкіру. Три краплі, вбиті подушечками пальців від центру обличчя назовні, перед кремом.',
+        texture_note: 'Шовковистий флюїд, природне фінішне покриття, вбирається миттєво.',
       },
       en: {
         line: 'Dafne Line',
@@ -54,15 +58,15 @@
       texture: 'assets/img/scenes/texture-cream.svg',
       accent: '#CFE0EC',
       stageBg: '#A89376',
-      it: {
-        line: 'Linea Dafne',
-        name: 'Crema Viso Comfort',
-        claim: 'Idratazione avvolgente per le pelli più sensibili.',
-        text: 'La Crema Viso Latte d’Asina + Vitamina E è più di una semplice idratante: è un trattamento quotidiano completo, che lavora su più livelli per nutrire, proteggere e lenire la barriera cutanea.',
-        familyLabel: 'Creme',
-        actives: ['Latte d’asina', 'Vitamina E', 'Burro di karité'],
-        ritual: 'Mattina e sera. Una noce di prodotto distribuita su viso e collo con movimenti circolari, dopo il siero.',
-        texture_note: 'Crema morbida, comfort immediato, nessun film oleoso.',
+      uk: {
+        line: 'Лінія Dafne',
+        name: 'Крем для обличчя Comfort',
+        claim: 'Огортальне зволоження для найчутливішої шкіри.',
+        text: 'Крем з ослиним молоком і вітаміном E — це більше, ніж зволожувач: це повноцінний щоденний догляд, який працює на кількох рівнях, щоб живити, захищати й заспокоювати шкірний бар’єр.',
+        familyLabel: 'Креми',
+        actives: ['Ослине молоко', 'Вітамін E', 'Масло ши'],
+        ritual: 'Вранці та ввечері. Порція завбільшки з лісовий горіх, розподілена по обличчю й шиї круговими рухами, після сироватки.',
+        texture_note: 'М’який крем, миттєвий комфорт, без жирної плівки.',
       },
       en: {
         line: 'Dafne Line',
@@ -88,15 +92,15 @@
       texture: 'assets/img/scenes/texture-leaf.svg',
       accent: '#D2D8DE',
       stageBg: '#1D4433',
-      it: {
-        line: 'Linea Dafne',
-        name: 'Crema Viso Hidra Lift',
-        claim: 'Tono, elasticità e un contorno del viso ridisegnato.',
-        text: 'Collagene e acido ialuronico a diverso peso molecolare agiscono in sinergia con il latte d’asina per rimpolpare la pelle e attenuare la profondità delle rughe. La texture, ricca ma non occlusiva, si assorbe rapidamente.',
-        familyLabel: 'Creme',
-        actives: ['Latte d’asina', 'Collagene', 'Acido ialuronico'],
-        ritual: 'Sera, o mattina e sera sulle pelli mature. Applicare dal basso verso l’alto, insistendo su mandibola e zigomi.',
-        texture_note: 'Texture ricca, finish vellutato, effetto rimpolpante progressivo.',
+      uk: {
+        line: 'Лінія Dafne',
+        name: 'Крем для обличчя Hidra Lift',
+        claim: 'Тонус, пружність і заново окреслений овал обличчя.',
+        text: 'Колаген і гіалуронова кислота різної молекулярної маси діють у синергії з ослиним молоком, щоб наповнити шкіру й зменшити глибину зморшок. Текстура насичена, але не оклюзивна, вбирається швидко.',
+        familyLabel: 'Креми',
+        actives: ['Ослине молоко', 'Колаген', 'Гіалуронова кислота'],
+        ritual: 'Ввечері або двічі на день для зрілої шкіри. Наносити знизу вгору, опрацьовуючи лінію щелепи та вилиці.',
+        texture_note: 'Насичена текстура, оксамитове фінішне покриття, поступовий ефект наповнення.',
       },
       en: {
         line: 'Dafne Line',
@@ -122,15 +126,15 @@
       texture: 'assets/img/scenes/texture-stone.svg',
       accent: '#E2D8C6',
       stageBg: '#B5A388',
-      it: {
-        line: 'Linea Dafne',
-        name: 'Cofanetto Rituale Dafne',
-        claim: 'I tre gesti della linea, in un unico rituale.',
-        text: 'Siero Illuminante, Crema Comfort e Crema Hidra Lift riuniti nel cofanetto che racconta l’intero rituale Dafne. Il modo più semplice per iniziare, o per regalare la linea completa.',
-        familyLabel: 'Rituali',
-        actives: ['Latte d’asina', 'Vitamina E', 'Collagene', 'Acido ialuronico'],
-        ritual: 'Siero, crema, protezione: il gesto completo mattina e sera.',
-        texture_note: 'Tre formule complementari, un’unica firma olfattiva.',
+      uk: {
+        line: 'Лінія Dafne',
+        name: 'Набір-ритуал Dafne',
+        claim: 'Три жести лінії в одному ритуалі.',
+        text: 'Освітлювальна сироватка, крем Comfort і крем Hidra Lift, зібрані в набір, що розповідає весь ритуал Dafne. Найпростіший спосіб почати — або подарувати повну лінію.',
+        familyLabel: 'Ритуали',
+        actives: ['Ослине молоко', 'Вітамін E', 'Колаген', 'Гіалуронова кислота'],
+        ritual: 'Сироватка, крем, захист: повний жест вранці та ввечері.',
+        texture_note: 'Три взаємодоповнювальні формули, один ольфакторний підпис.',
       },
       en: {
         line: 'Dafne Line',
@@ -147,7 +151,7 @@
 
   /** Returns the product, merged with the fields for the active language. */
   function resolve(product, lang) {
-    const locale = product[lang] || product.it;
+    const locale = product[lang] || product.uk;
     return Object.assign({}, product, locale);
   }
 

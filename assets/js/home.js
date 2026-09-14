@@ -1,10 +1,16 @@
 /* =========================================================================
-   Home page behaviour: the split hero slider and the pinned product showcase.
+   Home page behaviour.
+
+   All three of the home page's large blocks change on scroll rather than on a
+   timer: the hero swaps slides, the showcase swaps products, and the statement
+   band swaps lines. Each is a `NY.motion.pinnedStage` — the section is made
+   several screens tall, its stage is sticky, and scroll distance across the
+   pin selects which block is visible.
    ========================================================================= */
 (function (NY) {
   'use strict';
 
-  const { qs, qsa, clamp, pad2, formatPrice, reducedMotion, esc } = NY.util;
+  const { qs, qsa, pad2, formatPrice, esc } = NY.util;
 
   /* ---------------------------------------------------------------- hero */
 
@@ -18,51 +24,32 @@
     const thumbs = qsa('.explore__thumb img', hero);
     if (!slides.length) return;
 
-    let index = 0;
-    let thumbIndex = 0;
-    let slideTimer;
-    let thumbTimer;
+    let active = -1;
 
-    function show(next) {
-      index = (next + slides.length) % slides.length;
+    function show(index) {
+      if (index === active) return;
+      active = index;
       slides.forEach((slide, i) => { slide.dataset.active = String(i === index); });
       dots.forEach((dot, i) => { dot.setAttribute('aria-current', String(i === index)); });
-      if (exploreLink) {
-        const href = slides[index].dataset.href;
-        if (href) exploreLink.setAttribute('href', href);
+      // The Explore card previews and links to whatever slide is showing.
+      thumbs.forEach((img, i) => { img.dataset.active = String(i === index); });
+      if (exploreLink && slides[index].dataset.href) {
+        exploreLink.setAttribute('href', slides[index].dataset.href);
       }
     }
 
-    function cycleThumb() {
-      if (thumbs.length < 2) return;
-      thumbIndex = (thumbIndex + 1) % thumbs.length;
-      thumbs.forEach((img, i) => { img.dataset.active = String(i === thumbIndex); });
-    }
-
-    function schedule() {
-      clearInterval(slideTimer);
-      clearInterval(thumbTimer);
-      if (reducedMotion() || slides.length < 2) return;
-      slideTimer = setInterval(() => show(index + 1), 7000);
-      thumbTimer = setInterval(cycleThumb, 2400);
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => { show(i); schedule(); });
+    const stage = NY.motion.pinnedStage({
+      section: hero,
+      steps: slides.length,
+      screensPerStep: 0.8,
+      onChange: show,
     });
 
-    // Autoplay is a courtesy, not a demand: it stops whenever the tab is hidden.
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) { clearInterval(slideTimer); clearInterval(thumbTimer); }
-      else schedule();
-    });
-
+    dots.forEach((dot, i) => dot.addEventListener('click', () => stage.goTo(i)));
     show(0);
-    thumbs.forEach((img, i) => { img.dataset.active = String(i === 0); });
-    schedule();
   }
 
-  /* ----------------------------------------------------- pinned showcase */
+  /* -------------------------------------------------- product showcase */
 
   function initShowcase() {
     const section = qs('.showcase');
@@ -78,6 +65,7 @@
     let thumbLabel = null;
     let products = [];
     let active = -1;
+    let stage = null;
 
     function render() {
       const lang = NY.i18n.lang;
@@ -93,7 +81,7 @@
             <p class="showcase__text">${esc(p.text)}</p>
             <p class="showcase__price">${formatPrice(p.price, lang)} <span class="muted">· ${esc(p.volume)}</span></p>
             <div class="showcase__actions">
-              <a class="btn btn--light" href="prodotto.html?id=${esc(p.id)}"><span>${esc(t('showcase.discover'))}</span></a>
+              <a class="btn btn--light" href="product.html?id=${esc(p.id)}"><span>${esc(t('showcase.discover'))}</span></a>
               <button class="btn btn--light" type="button" data-add="${esc(p.id)}"><span>${esc(t('showcase.add'))}</span></button>
             </div>
           </div>
@@ -120,12 +108,18 @@
       thumbs = qsa('.showcase__thumb', thumbHost);
       thumbLabel = qs('.showcase__thumblabel', thumbHost);
 
-      // One screen of scroll per product, plus one to exit the pin.
-      section.style.setProperty('--panels', String(products.length));
-      section.style.height = `${(products.length + 1) * 100}svh`;
-
       active = -1;
-      setActive(0);
+      if (stage) stage.setSteps(panels.length); else setActive(0);
+    }
+
+    function setActive(i) {
+      if (i === active || !panels.length) return;
+      active = i;
+      panels.forEach((panel, n) => { panel.dataset.active = String(n === i); });
+      thumbs.forEach((btn, n) => { btn.setAttribute('aria-current', String(n === i)); });
+      if (counter) counter.textContent = `${pad2(i + 1)} / ${pad2(panels.length)}`;
+      if (thumbLabel && products[i]) thumbLabel.textContent = products[i].name;
+      if (products[i]) section.style.setProperty('--showcase-bg', products[i].stageBg);
     }
 
     // Bound once on the stable hosts, not inside render(), so re-rendering the
@@ -139,41 +133,37 @@
 
     thumbHost.addEventListener('click', (e) => {
       const btn = e.target.closest('.showcase__thumb');
-      if (btn) scrollToPanel(Number(btn.dataset.index));
+      if (btn && stage) stage.goTo(Number(btn.dataset.index));
     });
 
-    function scrollToPanel(i) {
-      const rect = section.getBoundingClientRect();
-      const top = window.scrollY + rect.top;
-      const span = section.offsetHeight - window.innerHeight;
-      const step = span / panels.length;
-      window.scrollTo({ top: top + step * (i + 0.5), behavior: reducedMotion() ? 'auto' : 'smooth' });
-    }
-
-    function setActive(i) {
-      if (i === active) return;
-      active = i;
-      panels.forEach((panel, n) => { panel.dataset.active = String(n === i); });
-      thumbs.forEach((btn, n) => { btn.setAttribute('aria-current', String(n === i)); });
-      if (thumbLabel && products[i]) thumbLabel.textContent = products[i].name;
-      if (counter) counter.textContent = `${pad2(i + 1)} / ${pad2(panels.length)}`;
-      if (products[i]) section.style.setProperty('--showcase-bg', products[i].stageBg);
-    }
-
-    function update() {
-      if (!panels.length) return;
-      const rect = section.getBoundingClientRect();
-      const span = section.offsetHeight - window.innerHeight;
-      if (span <= 0) return;
-      const progress = clamp(-rect.top / span, 0, 0.9999);
-      setActive(Math.floor(progress * panels.length));
-    }
-
     render();
+    stage = NY.motion.pinnedStage({
+      section,
+      steps: panels.length,
+      onChange: setActive,
+    });
     document.addEventListener('lang:change', render);
-    NY.ticker.add(update);
-    update();
   }
 
-  NY.home = { initHero, initShowcase };
+  /* ----------------------------------------------------- statement band */
+
+  function initStatement() {
+    const section = qs('.statement');
+    if (!section) return;
+    const lines = qsa('.statement__line', section);
+    const counter = qs('.statement__counter', section);
+    if (lines.length < 2) return;
+
+    NY.motion.pinnedStage({
+      section,
+      steps: lines.length,
+      screensPerStep: 0.6,
+      onChange(index) {
+        lines.forEach((line, i) => { line.dataset.active = String(i === index); });
+        if (counter) counter.textContent = `${pad2(index + 1)} / ${pad2(lines.length)}`;
+      },
+    });
+  }
+
+  NY.home = { initHero, initShowcase, initStatement };
 })(window.NY);
